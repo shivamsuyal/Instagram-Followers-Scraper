@@ -4,13 +4,9 @@ from datetime import datetime
 
 username=input("Username => ")
 password=input("Password => ")
-if username=="":
-   username="crazy_timepasser"
-if password=="":
-   password="*blAck07ice#"
 
-csrf="csrftoken=syX1Uw4CvWZdzoFXu06u549hTFuX4Ghm"
-hash1="3dec7e2c57367ef3da3d987d89f9dbc8"
+csrf="csrftoken="
+hash1=""
 
 time = int(datetime.now().timestamp())
 not_following=[]
