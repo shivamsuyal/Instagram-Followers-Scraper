@@ -10,4 +10,4 @@ Then start the insta.py
 
 Enter your username and then password.
 
-And the see the magic happen 🙂.
+And the see the magic happen 🙂
