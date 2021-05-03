@@ -13,7 +13,7 @@ agent=[
 username=input("Username => ")
 password=input("Password => ")
    
-csrf="csrftoken="
+csrf=""
 hash1=""
 
 time = int(datetime.now().timestamp())
@@ -32,7 +32,7 @@ login_header = {
     "User-Agent": random.choice(agent),    
     "X-Requested-With": "XMLHttpRequest",
     "Referer": "https://www.instagram.com/accounts/login/",
-    "x-csrftoken": csrf
+    "x-csrftoken": f"csrftoken={csrf}"
 }
 
 with requests.Session() as r:
