@@ -55,3 +55,9 @@ with requests.Session() as r:
     if not f1:
       not_following.append(u1)
    print(f"\nFollowing => {data_len}\n\nNot Following \n {not_following}")
+   
+   ## logout ##
+   #print("logout")
+   r.post("https://instagram.com/accounts/logout")
+   ##
+
