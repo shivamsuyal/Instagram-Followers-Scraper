@@ -12,8 +12,12 @@ agent=[
 
 username=input("Username => ")
 password=input("Password => ")
-   
-csrf=""
+if not username:
+	username="" #default username
+if not password:
+	password="" #default password
+
+csrf="csrftoken="
 hash1=""
 
 time = int(datetime.now().timestamp())
@@ -45,19 +49,41 @@ with requests.Session() as r:
    q3=urllib.parse.quote(q2)
    q4=q1+q3
    
+   ##request to get data ##
    id_response=r.get(q4)
-   json_data = json.loads(id_response.text)
-   data_len=json_data["data"]["user"]["edge_follow"]["count"]
-   
-   for i in range(data_len):
-    u1=json_data["data"]["user"]["edge_follow"]["edges"][i]["node"]["username"]
-    f1=json_data["data"]["user"]["edge_follow"]["edges"][i]["node"]["follows_viewer"]
-    if not f1:
-      not_following.append(u1)
-   print(f"\nFollowing => {data_len}\n\nNot Following \n {not_following}")
+   ##
    
    ## logout ##
    #print("logout")
    r.post("https://instagram.com/accounts/logout")
    ##
+   
+   ##parsing##
+   json_data = json.loads(id_response.text)
+   data_len=json_data["data"]["user"]["edge_followed_by"]["count"]
 
+   for i in range(data_len):
+    u1=json_data["data"]["user"]["edge_followed_by"]["edges"][i]["node"]["username"]
+    f1=json_data["data"]["user"]["edge_followed_by"]["edges"][i]["node"]["follows_viewer"]
+
+    if not f1:
+      not_following.append(u1)
+   print(f"\nFollowers => {data_len}\n\nNot Following \n {not_following}")
+
+"""
+example of json_data["data"]["user"]["edge_followed_by"]["edges"][i]
+{
+  "node":/
+    "id": "",
+    "username": "",
+    "full_name": "",
+    "profile_pic_url": "",
+    "is_private": true,
+    "is_verified": false,
+    "followed_by_viewer": true,
+    "follows_viewer": true,
+    "requested_by_viewer": false
+  }
+}
+
+"""
