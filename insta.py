@@ -25,8 +25,6 @@ not_following=[]
 
 login_url = 'https://www.instagram.com/accounts/login/ajax/'
 q1=f"https://www.instagram.com/graphql/query/?query_hash={hash1}&variables="
-q2=urllib.parse.quote('{"id":"{id1}","include_reel":false,"fetch_mutual":false,"first":2000}'.replace('{id1}',id1)
-q3=q1+q2
 
 payload = {
     'username': username,
@@ -47,6 +45,8 @@ with requests.Session() as r:
    j=json.loads(login_response.text)
    id1=j["userId"]
    
+   q2=urllib.parse.quote('{"id":"{id1}","include_reel":false,"fetch_mutual":false,"first":2000}'.replace('{id1}',id1)
+   q3=q1+q2
    ##request to get data ##
    id_response=r.get(q3)
    ##
