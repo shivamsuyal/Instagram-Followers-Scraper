@@ -1,5 +1,5 @@
 # Instagram-Followers-Scraper
-Sometimes people send you a request on instagram to follow them, and once ypu followed them back they stop following you. To know who has done this you can use this program.
+Sometimes people send you a request on instagram to follow them, and once you follow them back they stop following you. To know who has done this you can use this program.
 
 # Basically
 It will give you the list of people who don't follow you but you follow them
